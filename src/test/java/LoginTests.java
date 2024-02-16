@@ -40,14 +40,62 @@ public class LoginTests extends BaseTest {
     //Login with Valid email Test using the Page Object Model
     @Test
     public void loginValidEmailValidPasswordTest() throws InterruptedException {
-        LoginPage loginPage = new LoginPage(driver);
-        HomePage homePage = new HomePage(driver);
+        LoginPage loginPage = new LoginPage(getDriver());
+        HomePage homePage = new HomePage(getDriver());
 
         loginPage.provideEmail("demo@class.com");
+        Thread.sleep(2000);
         loginPage.providePassword("te$t$tudent");
+        Thread.sleep(2000);
         loginPage.clickSubmit();
         Thread.sleep(2000);
         Assert.assertTrue(homePage.getUserAvatar().isDisplayed());
+    }
+
+    @Test
+    public void loginInValidEmailValidPasswordTest() throws InterruptedException {
+        LoginPage loginPage = new LoginPage(getDriver());
+        HomePage homePage = new HomePage(getDriver());
+
+        loginPage.provideEmail("demos3@class.com");
+        Thread.sleep(2000);
+        loginPage.providePassword("te$t$tudent");
+        Thread.sleep(2000);
+        loginPage.clickSubmit();
+        Thread.sleep(2000);
+        Assert.assertTrue(homePage.getUserAvatar().isDisplayed());
+    }
+
+    @Test
+    public void loginEmptyEmailPasswordTest() throws InterruptedException {
+
+            LoginPage loginPage = new LoginPage(getDriver());
+            HomePage homePage = new HomePage(getDriver());
+
+            loginPage.provideEmail("");
+            Thread.sleep(2000);
+            loginPage.providePassword("");
+            Thread.sleep(2000);
+            loginPage.clickSubmit();
+            Thread.sleep(2000);
+            Assert.assertTrue(homePage.getUserAvatar().isDisplayed());
+
+    }
+
+    @Test
+    public void loginEmptyEmailvalidPasswordTest() throws InterruptedException {
+
+            LoginPage loginPage = new LoginPage(getDriver());
+            HomePage homePage = new HomePage(getDriver());
+
+            loginPage.provideEmail("");
+            Thread.sleep(2000);
+            loginPage.providePassword("te$t$tudent");
+            Thread.sleep(2000);
+            loginPage.clickSubmit();
+            Thread.sleep(2000);
+            Assert.assertTrue(homePage.getUserAvatar().isDisplayed());
+
     }
 
     @Test(dataProvider = "invalidLoginData", dataProviderClass = TestData.class)
