@@ -8,7 +8,9 @@
         <classes>
             <class name="LoginTests">
                 <methods>
-                    <include name="loginValidEmailPassword"/>
+                    <!--<include name="loginValidEmailPassword"/>-->
+                    <include name="loginValidEmailValidPasswordTest"/>
+
                 </methods>
             </class>
         </classes>
