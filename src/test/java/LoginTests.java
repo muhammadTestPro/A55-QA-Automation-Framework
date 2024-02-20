@@ -112,7 +112,7 @@ public class LoginTests extends BaseTest {
         Assert.assertTrue(avatarIcon.isDisplayed());
     }
 
-
+    
 
 
 /*
